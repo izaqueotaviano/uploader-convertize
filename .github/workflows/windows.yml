@@ -1,0 +1,54 @@
+name: Windows packages
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - edition: modern-x64
+            python: '3.13'
+            arch: x64
+            requirements: requirements-modern.txt
+          - edition: legacy-x64-experimental
+            python: '3.8'
+            arch: x64
+            requirements: requirements-legacy.txt
+          - edition: legacy-x86-experimental
+            python: '3.8'
+            arch: x86
+            requirements: requirements-legacy.txt
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: ${{ matrix.arch }}
+      - run: python -m pip install -r ${{ matrix.requirements }}
+      - run: python -m unittest discover -s tests -v
+      - run: python tests/smoke_ui.py
+        env:
+          QT_QPA_PLATFORM: offscreen
+      - run: python -m PyInstaller --noconfirm --windowed --onedir --name "Uploader Convertize" app/main.py
+      - name: Check packaged startup
+        shell: pwsh
+        run: |
+          $env:QT_QPA_PLATFORM = 'offscreen'
+          $process = Start-Process -FilePath 'dist/Uploader Convertize/Uploader Convertize.exe' -PassThru
+          Start-Sleep -Seconds 8
+          if ($process.HasExited) { throw "App exited prematurely: $($process.ExitCode)" }
+          Stop-Process -Id $process.Id
+      - name: Archive
+        shell: pwsh
+        run: |
+          Copy-Item README.md 'dist/Uploader Convertize/LEIA-ME.md'
+          Compress-Archive -Path 'dist/Uploader Convertize' -DestinationPath 'Uploader-Convertize-${{ matrix.edition }}.zip'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Uploader-Convertize-${{ matrix.edition }}
+          path: Uploader-Convertize-*.zip
+          if-no-files-found: error
