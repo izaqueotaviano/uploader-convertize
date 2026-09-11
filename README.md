@@ -1,4 +1,12 @@
-# Preparação Windows — não contém executável pronto
+# Uploader Convertize — Windows
+
+## Pacotes gerados
+
+Os três pacotes foram compilados no [build 34599375874](https://github.com/izaqueotaviano/uploader-convertize/actions/runs/34599375874): moderno x64, legado x64 e legado x86. Em cada ambiente passaram os 12 testes da lógica, o teste de interface e o autoteste do executável empacotado. Os artefatos do build contêm os ZIPs com os executáveis.
+
+Extraia o ZIP inteiro e abra `Uploader Convertize.exe`. Não mova o EXE para fora da pasta com suas DLLs. Os testes foram executados no Windows Server 2022 do GitHub Actions; não equivalem a testes em Windows 7/8.1, que continuam experimentais. Não houve upload real para a API.
+
+As notas abaixo registram a preparação original e as instruções de manutenção. A indisponibilidade local mencionada foi resolvida usando o GitHub Actions.
 
 Dois perfis preservam os recursos da versão 2.1: progresso, fila persistente, pausa/retomada, linhas verdes e bloqueio de suspensão.
 
