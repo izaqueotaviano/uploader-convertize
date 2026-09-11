@@ -38,10 +38,13 @@ jobs:
         shell: pwsh
         run: |
           $env:QT_QPA_PLATFORM = 'offscreen'
-          $process = Start-Process -FilePath 'dist/Uploader Convertize/Uploader Convertize.exe' -PassThru
-          Start-Sleep -Seconds 8
-          if ($process.HasExited) { throw "App exited prematurely: $($process.ExitCode)" }
-          Stop-Process -Id $process.Id
+          $process = Start-Process -FilePath 'dist/Uploader Convertize/Uploader Convertize.exe' -ArgumentList '--smoke-test' -PassThru
+          if (-not $process.WaitForExit(30000)) {
+            Stop-Process -Id $process.Id
+            throw 'App did not complete the startup self-test'
+          }
+          $process.Refresh()
+          if ($process.ExitCode -ne 0) { throw "Startup self-test failed: $($process.ExitCode)" }
       - name: Archive
         shell: pwsh
         run: |

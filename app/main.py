@@ -1,11 +1,12 @@
 import re
 import json
+import tempfile
 import sys
 import threading
 from collections import Counter
 from pathlib import Path
 
-from qt_compat import QThread, Signal, QSettings, QStandardPaths, QLockFile, QColor
+from qt_compat import QThread, Signal, QSettings, QStandardPaths, QLockFile, QColor, QTimer
 from qt_compat import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
     QFormLayout, QLabel, QLineEdit, QPushButton, QFileDialog, QMessageBox,
     QProgressBar, QTableWidget, QTableWidgetItem, QHeaderView, QDoubleSpinBox)
@@ -338,6 +339,12 @@ if __name__ == '__main__':
     app.setOrganizationName('Convertize')
     app.setApplicationName('Uploader Convertize')
     app.setApplicationVersion('2.1.0')
-    window = App()
+    smoke_dir = tempfile.TemporaryDirectory() if '--smoke-test' in sys.argv else None
+    window = App(smoke_dir.name if smoke_dir else None)
     window.show()
-    sys.exit(app.exec())
+    if smoke_dir:
+        QTimer.singleShot(500, app.quit)
+    exit_code = (app.exec if hasattr(app, 'exec') else app.exec_)()
+    if smoke_dir:
+        smoke_dir.cleanup()
+    sys.exit(exit_code)
