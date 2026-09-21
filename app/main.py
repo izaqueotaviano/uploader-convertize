@@ -74,7 +74,8 @@ class App(QWidget):
         title = QLabel('Imagens do catálogo')
         title.setStyleSheet('font-size: 25px; font-weight: 600; color: #153650;')
         layout.addWidget(title)
-        subtitle = QLabel('Selecione uma pasta e acompanhe o envio para a Convertize.')
+        subtitle = QLabel('Configure o acesso deste cliente e acompanhe seus resultados.' if getattr(self, 'embedded', False)
+                          else 'Selecione uma pasta e acompanhe o envio para a Convertize.')
         layout.addWidget(subtitle)
         form = QFormLayout()
         form.setSpacing(10)
@@ -210,10 +211,10 @@ class App(QWidget):
         if folder:
             self.folder.setText(folder)
 
-    def start(self, checked=False, resume=False):
+    def start(self, checked=False, resume=False, confirmed=False):
         if self.busy or not self.send.isEnabled():
             return
-        if self.resume_pending and not resume:
+        if self.resume_pending and not resume and not confirmed:
             if QMessageBox.question(self, 'Iniciar outra fila?', 'Existe uma fila salva. Substituir a fila pendente por um novo envio?') != QMessageBox.Yes:
                 return
         if not self.lock.tryLock(0):
@@ -283,7 +284,7 @@ class App(QWidget):
             title, detail = 'Envio interrompido', result['fatal']
             notice = QMessageBox.warning
         elif result.get('paused'):
-            title, detail = 'Envio pausado', 'Fila salva. Você pode fechar o aplicativo e continuar depois. O computador pode suspender normalmente.'
+            title, detail = 'Envio pausado', 'Fila salva. Você pode continuar depois. A suspensão será liberada quando não houver outros envios ativos.'
             notice = QMessageBox.information
         elif result.get('cancelled'):
             title, detail = 'Envio cancelado', f"{len(self.rows)} de {result.get('total', 0)} arquivos concluídos."
@@ -301,7 +302,8 @@ class App(QWidget):
         self.copy.setEnabled(True)
         self.save.setEnabled(True)
         self.last_detail = detail
-        notice(self, title, f'{summary}\n\n{detail}')
+        if not getattr(self, 'embedded', False):
+            notice(self, title, f'{summary}\n\n{detail}')
 
     def on_finished(self):
         self.busy = False
@@ -338,9 +340,11 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setOrganizationName('Convertize')
     app.setApplicationName('Uploader Convertize')
-    app.setApplicationVersion('2.1.0')
+    app.setApplicationVersion('2.2.0')
     smoke_dir = tempfile.TemporaryDirectory() if '--smoke-test' in sys.argv else None
-    window = App(smoke_dir.name if smoke_dir else None)
+    # Import here avoids a circular import when the main module is frozen.
+    from tabs import MultiClient
+    window = MultiClient(smoke_dir.name if smoke_dir else None)
     window.show()
     if smoke_dir:
         QTimer.singleShot(500, app.quit)

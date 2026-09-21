@@ -48,7 +48,7 @@ jobs:
       - name: Archive
         shell: pwsh
         run: |
-          Copy-Item README.md 'dist/Uploader Convertize/LEIA-ME.md'
+          Copy-Item GUIA-2.2.txt 'dist/Uploader Convertize/LEIA-ME.txt'
           Compress-Archive -Path 'dist/Uploader Convertize' -DestinationPath 'Uploader-Convertize-${{ matrix.edition }}.zip'
       - uses: actions/upload-artifact@v4
         with:

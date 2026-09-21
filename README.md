@@ -1,5 +1,11 @@
 # Uploader Convertize — Windows
 
+## Versão 2.2 — clientes em abas
+
+Pasta compartilhada, até três envios simultâneos, fila de espera, credenciais apenas em memória,
+histórico e pausa independentes. Consulte `GUIA-2.2.txt`. O código também inclui o build Mac
+em `Uploader.spec`. Os registros de build 2.1 abaixo permanecem como histórico.
+
 ## Pacotes gerados
 
 Os três pacotes foram compilados no [build 34599375874](https://github.com/izaqueotaviano/uploader-convertize/actions/runs/34599375874): moderno x64, legado x64 e legado x86. Em cada ambiente passaram os 12 testes da lógica, o teste de interface e o autoteste do executável empacotado. Os artefatos do build contêm os ZIPs com os executáveis.

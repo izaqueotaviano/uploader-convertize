@@ -4,6 +4,7 @@ __pycache__/
 dist/
 build/
 *.spec
+!Uploader.spec
 *.zip
 queue.json
 processed_files*.json
