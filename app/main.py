@@ -347,9 +347,10 @@ def run():
     window = MultiClient(smoke_dir.name if smoke_dir else None)
     window.show()
     if smoke_dir:
-        QTimer.singleShot(500, app.quit)
+        QTimer.singleShot(500, window.close)
     exit_code = (app.exec if hasattr(app, 'exec') else app.exec_)()
     if smoke_dir:
+        window.close()
         smoke_dir.cleanup()
     sys.exit(exit_code)
 
