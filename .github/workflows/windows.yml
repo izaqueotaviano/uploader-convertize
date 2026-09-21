@@ -33,7 +33,7 @@ jobs:
       - run: python tests/smoke_ui.py
         env:
           QT_QPA_PLATFORM: offscreen
-      - run: python -m PyInstaller --noconfirm --windowed --onedir --name "Uploader Convertize" app/main.py
+      - run: python -m PyInstaller --noconfirm --windowed --onedir --name "Uploader Convertize" app/launcher.py
       - name: Check packaged startup
         shell: pwsh
         run: |
@@ -44,7 +44,10 @@ jobs:
             throw 'App did not complete the startup self-test'
           }
           $process.Refresh()
-          if ($process.ExitCode -ne 0) { throw "Startup self-test failed: $($process.ExitCode)" }
+          if ($process.ExitCode -ne 0) {
+            if (Test-Path smoke-error.txt) { Get-Content smoke-error.txt }
+            throw "Startup self-test failed: $($process.ExitCode)"
+          }
       - name: Archive
         shell: pwsh
         run: |

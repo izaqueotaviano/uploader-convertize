@@ -336,7 +336,7 @@ class App(QWidget):
             event.accept()
 
 
-if __name__ == '__main__':
+def run():
     app = QApplication(sys.argv)
     app.setOrganizationName('Convertize')
     app.setApplicationName('Uploader Convertize')
@@ -352,3 +352,7 @@ if __name__ == '__main__':
     if smoke_dir:
         smoke_dir.cleanup()
     sys.exit(exit_code)
+
+
+if __name__ == '__main__':
+    run()
