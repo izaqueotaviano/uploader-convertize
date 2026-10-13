@@ -138,7 +138,7 @@ def paste_icon(canvas, icon, size, center):
 
 
 def write_wizard(vc, out_dir):
-    icon = Image.open(os.path.join(vc, "assets", "app-icon", "photocraft-1024.png")).convert("RGBA")
+    icon = Image.open(os.path.join(vc, "assets", "app-icon", "hicolor", "512x512", "apps", "ai.storyteller.photocraft.png")).convert("RGBA")
     font_path = os.path.join(vc, "assets", "fonts", "Inter-SemiBold.ttf")
     sub_path = os.path.join(vc, "assets", "fonts", "Inter-Regular.ttf")
     for i, (w, h) in enumerate(WIZARD_LARGE):
