@@ -2,7 +2,8 @@ name: VectorCraft installers
 # Compila o VectorCraft (github.com/storytold/vectorcraft) a partir do código-fonte e gera:
 #   VectorCraft-<versão>-macOS-Universal.dmg      (Apple silicon + Intel, arrastar para Aplicativos)
 #   VectorCraft-<versão>-Windows-<arch>-Setup.exe (assistente Inno Setup)
-# Os arquivos ficam em "Artifacts" na página da execução. Detalhes em instalador-vectorcraft/README.md.
+# e publica os dois numa Release deste repositório (aba Releases), para baixar e executar.
+# Detalhes em instalador-vectorcraft/README.md.
 on:
   workflow_dispatch:
     inputs:
@@ -158,3 +159,37 @@ jobs:
           name: VectorCraft-Windows-${{ matrix.arch }}
           path: saida/*.exe
           if-no-files-found: error
+
+  # Publica os instaladores numa Release deste repositório: download direto, sem zip.
+  publicar:
+    name: Publicar Release
+    needs: [macos, windows]
+    if: ${{ !cancelled() && (needs.macos.result == 'success' || needs.windows.result == 'success') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: saida
+          merge-multiple: true
+      - name: Criar ou atualizar a Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REF: ${{ inputs.ref }}
+        run: |
+          ls -la saida
+          v="$(find saida -name 'VectorCraft-*' -printf '%f\n' | sed -nE 's/^VectorCraft-(.+)-(macOS|Windows)-.*/\1/p' | head -1)"
+          [ -n "$v" ] || { echo "nenhum instalador encontrado" >&2; exit 1; }
+          tag="vectorcraft-v$v"
+          (cd saida && sha256sum VectorCraft-* >SHA256SUMS.txt)
+          sed -e "s/{VERSAO}/$v/g" -e "s|{REF}|$REF|g" instalador-vectorcraft/notas-release.md >notas.md
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" saida/* --clobber
+            gh release edit "$tag" --notes-file notas.md
+          else
+            gh release create "$tag" saida/* --title "VectorCraft $v" --notes-file notas.md --latest
+          fi
+          echo "### Release: https://github.com/$GH_REPO/releases/tag/$tag" >>"$GITHUB_STEP_SUMMARY"

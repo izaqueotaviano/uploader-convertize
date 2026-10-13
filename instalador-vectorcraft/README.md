@@ -13,8 +13,9 @@ o editor vetorial open source (MIT ou Apache-2.0) da equipe ArtCraft.
 
 1. No GitHub, abra **Actions › VectorCraft installers › Run workflow**.
 2. Em *ref*, deixe `main` (ou informe uma tag do VectorCraft, como `v0.10.0`) e clique em **Run workflow**.
-3. Quando terminar (cerca de 30 a 45 minutos: o VectorCraft é compilado do zero), baixe os arquivos em
-   **Artifacts**, no fim da página da execução.
+3. Quando terminar (cerca de 30 a 45 minutos: o VectorCraft é compilado do zero), os instaladores
+   aparecem na aba **Releases** do repositório, como `VectorCraft <versão>`. É só baixar o `.exe` ou
+   o `.dmg` e abrir.
 
 O workflow está em [`.github/workflows/vectorcraft-instaladores.yml`](../.github/workflows/vectorcraft-instaladores.yml).
 Ele baixa o código do VectorCraft, compila com os scripts do próprio projeto e empacota com os arquivos
