@@ -1,0 +1,37 @@
+test new_doc_ui::tests::dialog::a_custom_background_color_is_picked_and_used ... FAILED
+test new_doc_ui::tests::dialog::advanced_options_toggle_and_reach_create ... FAILED
+test new_doc_ui::tests::dialog::clicking_a_preset_card_after_typing_sets_its_size ... FAILED
+test new_doc_ui::tests::dialog::enter_saves_the_preset_and_bad_names_leave_the_form_open ... FAILED
+test new_doc_ui::tests::dialog::orientation_swap_keeps_whole_pixels ... FAILED
+test new_doc_ui::tests::dialog::picked_orientation_turns_the_presets ... FAILED
+test new_doc_ui::tests::dialog::preset_cards_use_the_preset_resolution_preferences ... FAILED
+test new_doc_ui::tests::dialog::save_restart_select_create_and_delete_through_the_dialog ... FAILED
+test new_doc_ui::tests::dialog::the_artboards_checkbox_reaches_file_new ... FAILED
+test new_doc_ui::tests::dialog::the_clipboard_card_is_first_and_creates_the_clipboard_size ... FAILED
+test new_doc_ui::tests::dialog::typed_size_then_create_without_leaving_the_field_creates_that_size ... FAILED
+failures:
+thread 'new_doc_ui::tests::dialog::a_custom_background_color_is_picked_and_used' (9673) panicked at crates/ui-egui/src/new_doc_ui.rs:1452:18:
+thread 'new_doc_ui::tests::dialog::advanced_options_toggle_and_reach_create' (9674) panicked at crates/ui-egui/src/new_doc_ui.rs:1992:13:
+thread 'new_doc_ui::tests::dialog::clicking_a_preset_card_after_typing_sets_its_size' (9677) panicked at crates/ui-egui/src/new_doc_ui.rs:1818:13:
+thread 'new_doc_ui::tests::dialog::enter_saves_the_preset_and_bad_names_leave_the_form_open' (9682) panicked at crates/ui-egui/src/new_doc_ui.rs:1481:15:
+thread 'new_doc_ui::tests::dialog::orientation_swap_keeps_whole_pixels' (9684) panicked at crates/ui-egui/src/new_doc_ui.rs:1874:13:
+thread 'new_doc_ui::tests::dialog::picked_orientation_turns_the_presets' (9685) panicked at crates/ui-egui/src/new_doc_ui.rs:1624:82:
+thread 'new_doc_ui::tests::dialog::preset_cards_use_the_preset_resolution_preferences' (9687) panicked at crates/ui-egui/src/new_doc_ui.rs:1624:82:
+thread 'new_doc_ui::tests::dialog::save_restart_select_create_and_delete_through_the_dialog' (9688) panicked at crates/ui-egui/src/new_doc_ui.rs:1481:15:
+thread 'new_doc_ui::tests::dialog::the_artboards_checkbox_reaches_file_new' (9690) panicked at crates/ui-egui/src/new_doc_ui.rs:2021:51:
+thread 'new_doc_ui::tests::dialog::the_clipboard_card_is_first_and_creates_the_clipboard_size' (9691) panicked at crates/ui-egui/src/new_doc_ui.rs:1802:13:
+thread 'new_doc_ui::tests::dialog::typed_size_then_create_without_leaving_the_field_creates_that_size' (9697) panicked at crates/ui-egui/src/new_doc_ui.rs:1610:13:
+failures:
+    new_doc_ui::tests::dialog::a_custom_background_color_is_picked_and_used
+    new_doc_ui::tests::dialog::advanced_options_toggle_and_reach_create
+    new_doc_ui::tests::dialog::clicking_a_preset_card_after_typing_sets_its_size
+    new_doc_ui::tests::dialog::enter_saves_the_preset_and_bad_names_leave_the_form_open
+    new_doc_ui::tests::dialog::orientation_swap_keeps_whole_pixels
+    new_doc_ui::tests::dialog::picked_orientation_turns_the_presets
+    new_doc_ui::tests::dialog::preset_cards_use_the_preset_resolution_preferences
+    new_doc_ui::tests::dialog::save_restart_select_create_and_delete_through_the_dialog
+    new_doc_ui::tests::dialog::the_artboards_checkbox_reaches_file_new
+    new_doc_ui::tests::dialog::the_clipboard_card_is_first_and_creates_the_clipboard_size
+    new_doc_ui::tests::dialog::typed_size_then_create_without_leaving_the_field_creates_that_size
+test result: FAILED. 2690 passed; 11 failed; 12 ignored; 0 measured; 0 filtered out; finished in 82.22s
+resultado=failure
