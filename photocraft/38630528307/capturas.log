@@ -1,0 +1,27 @@
+$ xvfb-run -a cargo run --locked -q -p photocraft-ui-egui --example snapshot -- --out /home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png --size 1440x900 --scale 1
+perf: {"commandMs":0.0,"compositeMs":0.0,"gpu":false,"gpuBudgetMb":0,"gpuFallback":null,"gpuInfo":{"adapter":"llvmpipe (LLVM 20.1.2, 256 bits)","backend":"vulkan","canvas":"gpu","deviceType":"cpu","driver":"llvmpipe Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)","fallback":null,"lost":null,"preference":"","selected":""},"gpuUploads":0,"lastCommand":"","lastRefresh":"","lastRefreshPx":0,"spans":{},"uiMaxMs":18.500472000000002,"uiMs":3.1247579670201135,"uploadMs":0.0}
+language: {"preference":"auto","resolved":"en"}
+wrote /home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png (1440×900)
+
+$ xvfb-run -a cargo run --locked -q -p photocraft-ui-egui --example snapshot -- --out /home/runner/work/uploader-convertize/uploader-convertize/saida/2-novo-documento.png --size 1440x900 --scale 1 --script [["ui.menu.invoke", {"id": "file.new"}]]
+perf: {"commandMs":0.0,"compositeMs":0.0,"gpu":false,"gpuBudgetMb":0,"gpuFallback":null,"gpuInfo":{"adapter":"llvmpipe (LLVM 20.1.2, 256 bits)","backend":"vulkan","canvas":"gpu","deviceType":"cpu","driver":"llvmpipe Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)","fallback":null,"lost":null,"preference":"","selected":""},"gpuUploads":0,"lastCommand":"","lastRefresh":"","lastRefreshPx":0,"spans":{},"uiMaxMs":18.704271,"uiMs":2.53260425696377,"uploadMs":0.0}
+language: {"preference":"auto","resolved":"en"}
+wrote /home/runner/work/uploader-convertize/uploader-convertize/saida/2-novo-documento.png (1440×900)
+
+$ xvfb-run -a cargo run --locked -q -p photocraft-ui-egui --example snapshot -- --out /home/runner/work/uploader-convertize/uploader-convertize/saida/3-novo-documento-print.png --size 1440x900 --scale 1 --script [["ui.menu.invoke", {"id": "file.new"}], ["ui.dialog.set", {"field": "__category", "value": "Print"}]]
+ui.dialog.set: {"error":"need `dialog` and `field`","ok":false}
+perf: {"commandMs":0.0,"compositeMs":0.0,"gpu":false,"gpuBudgetMb":0,"gpuFallback":null,"gpuInfo":{"adapter":"llvmpipe (LLVM 20.1.2, 256 bits)","backend":"vulkan","canvas":"gpu","deviceType":"cpu","driver":"llvmpipe Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)","fallback":null,"lost":null,"preference":"","selected":""},"gpuUploads":0,"lastCommand":"","lastRefresh":"","lastRefreshPx":0,"spans":{},"uiMaxMs":18.450588999999997,"uiMs":1.8269202540398681,"uploadMs":0.0}
+language: {"preference":"auto","resolved":"en"}
+wrote /home/runner/work/uploader-convertize/uploader-convertize/saida/3-novo-documento-print.png (1440×900)
+
+$ xvfb-run -a cargo run --locked -q -p photocraft-ui-egui --example snapshot -- --out /home/runner/work/uploader-convertize/uploader-convertize/saida/4-novo-documento-avancado.png --size 1440x900 --scale 1 --script [["ui.menu.invoke", {"id": "file.new"}], ["ui.dialog.set", {"field": "__advanced", "value": true}]]
+ui.dialog.set: {"error":"need `dialog` and `field`","ok":false}
+perf: {"commandMs":0.0,"compositeMs":0.0,"gpu":false,"gpuBudgetMb":0,"gpuFallback":null,"gpuInfo":{"adapter":"llvmpipe (LLVM 20.1.2, 256 bits)","backend":"vulkan","canvas":"gpu","deviceType":"cpu","driver":"llvmpipe Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)","fallback":null,"lost":null,"preference":"","selected":""},"gpuUploads":0,"lastCommand":"","lastRefresh":"","lastRefreshPx":0,"spans":{},"uiMaxMs":18.553350000000002,"uiMs":1.8388261891621427,"uploadMs":0.0}
+language: {"preference":"auto","resolved":"en"}
+wrote /home/runner/work/uploader-convertize/uploader-convertize/saida/4-novo-documento-avancado.png (1440×900)
+
+$ xvfb-run -a cargo run --locked -q -p photocraft-ui-egui --example snapshot -- --out /home/runner/work/uploader-convertize/uploader-convertize/saida/5-janela-principal.png --size 1440x900 --scale 1 --open /home/runner/work/uploader-convertize/uploader-convertize/saida/_amostra.png
+perf: {"commandMs":0.0,"compositeMs":501.472693,"gpu":true,"gpuBudgetMb":3997,"gpuFallback":null,"gpuInfo":{"adapter":"llvmpipe (LLVM 20.1.2, 256 bits)","backend":"vulkan","canvas":"gpu","deviceType":"cpu","driver":"llvmpipe Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)","fallback":null,"lost":null,"preference":"","selected":""},"gpuUploads":28,"lastCommand":"","lastRefresh":"gpu-full","lastRefreshPx":1600000,"spans":{"scrollbars":0.0},"uiMaxMs":521.74923,"uiMs":78.86641267544306,"uploadMs":0.0}
+language: {"preference":"auto","resolved":"en"}
+wrote /home/runner/work/uploader-convertize/uploader-convertize/saida/5-janela-principal.png (1440×900)
+

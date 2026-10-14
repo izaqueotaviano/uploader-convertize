@@ -1,0 +1,1 @@
+b3586563bf4adb32683f76fc39942d328bb27f51 WIP: área dos cartões empilha na vertical e tem largura fixa
