@@ -1,0 +1,11 @@
+$ xvfb-run -a -s -screen 0 1600x1000x24 /home/runner/work/uploader-convertize/uploader-convertize/app/target/debug/filmcraft --control 7981 --no-recover
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png"} -> {"id":1,"ok":true,"result":{"height":980,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png","width":1600}}
+  engine.execute {"command": "file.newProject", "params": {}} -> {"id":2,"ok":true,"result":{"dialog":"newProject"}}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/2-novo-documento.png"} -> {"id":3,"ok":true,"result":{"height":980,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/2-novo-documento.png","width":1600}}
+  ui.set {"newProject": {"category": "cinema"}} -> {"id":4,"ok":true,"result":null}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/3-novo-documento-cinema.png"} -> {"id":5,"ok":true,"result":{"height":980,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/3-novo-documento-cinema.png","width":1600}}
+  ui.set {"newProject": {"advanced": true}} -> {"id":6,"ok":true,"result":null}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/4-novo-documento-avancado.png"} -> {"id":7,"ok":true,"result":{"height":980,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/4-novo-documento-avancado.png","width":1600}}
+  ui.key {"key": "Escape"} -> {"id":8,"ok":true,"result":null}
+  engine.execute {"command": "file.newProject", "params": {"name": "Demo"}} -> {"id":9,"ok":true,"result":null}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/5-janela-principal.png"} -> {"id":10,"ok":true,"result":{"height":980,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/5-janela-principal.png","width":1600}}

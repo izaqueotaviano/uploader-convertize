@@ -1,0 +1,9 @@
+test i18n::tests::japanese_needs_an_installed_font ... FAILED
+test theme::tests::japanese_renders_with_craft_fonts ... FAILED
+failures:
+thread 'i18n::tests::japanese_needs_an_installed_font' (15467) panicked at crates/ui-egui/src/i18n/mod.rs:1363:21:
+thread 'theme::tests::japanese_renders_with_craft_fonts' (15812) panicked at crates/ui-egui/src/theme.rs:738:17:
+failures:
+    theme::tests::japanese_renders_with_craft_fonts
+test result: FAILED. 196 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.22s
+resultado=failure

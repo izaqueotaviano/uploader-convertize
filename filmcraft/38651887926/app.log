@@ -1,0 +1,77 @@
+2026-10-14T23:21:00.665Z INFO  [main] filmcraft: FilmCraft 0.8.0 (linux x86_64)
+2026-10-14T23:21:00.665Z INFO  [main] filmcraft: log file /home/runner/work/uploader-convertize/uploader-convertize/saida/_dados/Logs/filmcraft.log
+2026-10-14T23:21:00.665Z INFO  [main] filmcraft_platform: no VA-API hardware decoding: libva.so.2: libva.so.2: cannot open shared object file: No such file or directory
+2026-10-14T23:21:00.665Z INFO  [main] filmcraft_platform: no NVDEC hardware decoding: no NVIDIA NVDEC library: libnvcuvid.so.1: cannot open shared object file: No such file or directory
+2026-10-14T23:21:00.665Z INFO  [main] filmcraft: hardware decoding: Unavailable("no VA-API driver (libva and a DRM render node) and no NVIDIA driver (NVDEC)")
+2026-10-14T23:21:00.670Z WARN  [main] winit::platform_impl::linux::x11::xdisplay: error setting XSETTINGS; Xft options won't reload automatically
+2026-10-14T23:21:00.694Z WARN  [main] winit::platform_impl::linux::x11::util::randr: XRandR reported that the display's 0mm in size, which is certifiably insane
+libEGL warning: DRI3 error: Could not get DRI3 device
+libEGL warning: Ensure your X server supports DRI3 to get accelerated rendering
+2026-10-14T23:21:00.861Z WARN  [main] egui_wgpu: Software rasterizer detected - loss of performance expected. backend: Vulkan, device_type: Cpu, name: "llvmpipe (LLVM 20.1.2, 256 bits)", driver: "llvmpipe", driver_info: "Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)", vendor: Mesa (0x10005), subgroup_size: 8..=8, transient_saves_memory: Some(false), limit_bucket: None
+2026-10-14T23:21:00.877Z WARN  [main] filmcraft_ui_egui: GPU compositor disabled (software rasterizer (llvmpipe (LLVM 20.1.2, 256 bits), Cpu)); compositing on the CPU
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pipewire
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pipewire
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pulse
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pulse
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM jack
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM jack
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM oss
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM oss
+2026-10-14T23:21:00.942Z WARN  [main] filmcraft::audio: no audio output device found
+filmcraft: control server listening on 127.0.0.1:7981
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5208:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5731:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pipewire
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pipewire
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pulse
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM pulse
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM jack
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM jack
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM oss
+ALSA lib pcm.c:2721:(snd_pcm_open_noupdate) Unknown PCM oss
