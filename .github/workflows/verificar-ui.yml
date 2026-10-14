@@ -8,7 +8,7 @@ on:
       app:
         description: App
         type: choice
-        options: [vectorcraft, photocraft, figcraft]
+        options: [vectorcraft, photocraft, figcraft, filmcraft]
         required: true
       ref:
         description: Branch, tag ou commit do fork izaqueotaviano/<app>
@@ -49,7 +49,7 @@ jobs:
           path: app
       - name: Fontes (craft-fonts na versão que o app usa)
         run: |
-          ref="$(grep -m1 -E '^\s*CRAFT_FONTS_REF:' app/.github/workflows/release.yml | awk '{print $2}')"
+          ref="$(grep -m1 -E '^\s*(CRAFT_FONTS_REF|craft-fonts-ref):' app/.github/workflows/release.yml | awk '{print $2}')"
           echo "craft-fonts @ ${ref:-main}"
           git clone -q --filter=blob:none https://github.com/storytold/craft-fonts craft-fonts
           if [ -n "$ref" ]; then git -C craft-fonts checkout -q "$ref"; fi
@@ -58,7 +58,7 @@ jobs:
         run: |
           sudo apt-get update -q
           sudo apt-get install -y -q libxkbcommon-dev libxkbcommon-x11-0 libwayland-dev libx11-dev libxrandr-dev libxi-dev \
-            libgl1-mesa-dev libegl1 libegl-mesa0 libgtk-3-dev mesa-vulkan-drivers xvfb imagemagick
+            libgl1-mesa-dev libegl1 libegl-mesa0 libgtk-3-dev libasound2-dev mesa-vulkan-drivers xvfb imagemagick
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
         with:
@@ -70,6 +70,7 @@ jobs:
             vectorcraft) echo "UI_PKG=vectorcraft-ui-egui" >>"$GITHUB_ENV"; echo "BIN_PKG=vectorcraft" >>"$GITHUB_ENV" ;;
             photocraft)  echo "UI_PKG=photocraft-ui-egui"  >>"$GITHUB_ENV"; echo "BIN_PKG=photocraft"  >>"$GITHUB_ENV" ;;
             figcraft)    echo "UI_PKG=figcraft-ui-egui"    >>"$GITHUB_ENV"; echo "BIN_PKG=figcraft"    >>"$GITHUB_ENV" ;;
+            filmcraft)   echo "UI_PKG=filmcraft-ui-egui"   >>"$GITHUB_ENV"; echo "BIN_PKG=filmcraft"   >>"$GITHUB_ENV" ;;
           esac
           mkdir -p saida
           git -C app log -1 --format='%H %s' | tee saida/commit.txt

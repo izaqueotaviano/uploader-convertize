@@ -64,9 +64,9 @@ class Control:
         log(f"  !! sem captura: {name}")
 
 
-def run_windowed(binary, port, steps, env_extra):
+def run_windowed(binary, port, steps, env_extra, args=()):
     env = dict(os.environ, **env_extra)
-    cmd = ["xvfb-run", "-a", "-s", "-screen 0 1600x1000x24", binary, "--control", str(port)]
+    cmd = ["xvfb-run", "-a", "-s", "-screen 0 1600x1000x24", binary, "--control", str(port), *args]
     log("$ " + " ".join(cmd))
     proc = subprocess.Popen(cmd, cwd=SRC, env=env, stdout=open(os.path.join(OUT, "app.log"), "w"), stderr=subprocess.STDOUT)
     try:
@@ -108,6 +108,26 @@ def figcraft():
     run_windowed(os.path.join(TARGET, "figcraft"), 7980, steps, {})
 
 
+def filmcraft():
+    data = os.path.join(OUT, "_dados")
+    os.makedirs(data, exist_ok=True)
+
+    def steps(c):
+        c.shot("1-inicio", settle=5)
+        c.call("engine.execute", {"command": "file.newProject", "params": {}})
+        c.shot("2-novo-documento")
+        c.call("ui.set", {"newProject": {"category": "cinema"}})
+        c.shot("3-novo-documento-cinema")
+        c.call("ui.set", {"newProject": {"advanced": True}})
+        c.shot("4-novo-documento-avancado")
+        c.call("ui.key", {"key": "Escape"})
+        c.call("engine.execute", {"command": "file.newProject", "params": {"name": "Demo"}})
+        c.shot("5-janela-principal", settle=2)
+
+    binary = os.path.join(TARGET, "filmcraft")
+    run_windowed(binary, 7981, steps, {"FILMCRAFT_DATA_DIR": data}, ["--no-recover"])
+
+
 def photocraft():
     image = os.path.join(OUT, "_amostra.png")
     subprocess.run(["convert", "-size", "1600x1000", "gradient:#4a7ab8-#e8b04a", image], check=False)
@@ -133,4 +153,4 @@ def photocraft():
         os.remove(image)
 
 
-{"vectorcraft": vectorcraft, "photocraft": photocraft, "figcraft": figcraft}[APP]()
+{"vectorcraft": vectorcraft, "photocraft": photocraft, "figcraft": figcraft, "filmcraft": filmcraft}[APP]()
