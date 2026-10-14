@@ -32,10 +32,6 @@ jobs:
           repository: storytold/craft-fonts
           ref: ${{ env.CRAFT_FONTS_REF }}
           path: craft-fonts
-      # Ícone próprio (instalador-photocraft/icone) no lugar do original, antes de compilar.
-      - name: Aplicar o ícone novo
-        shell: bash
-        run: cp -R instalador-photocraft/icone/app-icon/. photocraft/assets/app-icon/
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-apple-darwin, x86_64-apple-darwin
@@ -100,10 +96,6 @@ jobs:
           repository: storytold/craft-fonts
           ref: ${{ env.CRAFT_FONTS_REF }}
           path: craft-fonts
-      # Ícone próprio (instalador-photocraft/icone) no lugar do original, antes de compilar.
-      - name: Aplicar o ícone novo
-        shell: bash
-        run: cp -R instalador-photocraft/icone/app-icon/. photocraft/assets/app-icon/
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
