@@ -1,5 +1,6 @@
 name: PhotoCraft installers
-# Compila o PhotoCraft (github.com/storytold/photocraft) a partir do código-fonte e gera:
+# Compila o PhotoCraft a partir do código-fonte (por padrão do fork github.com/izaqueotaviano/photocraft;
+# o input `repo` aceita outro, como storytold/photocraft) e gera:
 #   PhotoCraft-<versão>-macOS-Universal.dmg      (Apple silicon + Intel, arrastar para Aplicativos)
 #   PhotoCraft-<versão>-Windows-<arch>-Setup.exe (assistente Inno Setup)
 # e publica os dois numa Release deste repositório (aba Releases), para baixar e executar.
@@ -7,6 +8,10 @@ name: PhotoCraft installers
 on:
   workflow_dispatch:
     inputs:
+      repo:
+        description: Repositório do PhotoCraft (dono/nome)
+        default: izaqueotaviano/photocraft
+        required: true
       ref:
         description: Branch, tag ou commit do PhotoCraft
         default: main
@@ -23,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: storytold/photocraft
+          repository: ${{ inputs.repo }}
           ref: ${{ inputs.ref }}
           path: photocraft
       # Fontes japonesas, chinesas, árabes e tailandesas que os builds oficiais embutem.
@@ -42,7 +47,7 @@ jobs:
         run: |
           v="$(awk '/^\[/ { p = ($0 == "[workspace.package]"); next } p && $1 == "version" { gsub(/[" ]/, "", $3); print $3; exit }' photocraft/Cargo.toml)"
           echo "VERSION=$v" >>"$GITHUB_ENV"
-          echo "### PhotoCraft $v (${{ inputs.ref }})" >>"$GITHUB_STEP_SUMMARY"
+          echo "### PhotoCraft $v (${{ inputs.repo }}@${{ inputs.ref }})" >>"$GITHUB_STEP_SUMMARY"
       # Opcional: com os secrets abaixo o app e o DMG saem assinados e notarizados pela Apple.
       # Sem eles, a assinatura é ad-hoc (veja o README).
       - name: Certificado Developer ID
@@ -88,7 +93,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: storytold/photocraft
+          repository: ${{ inputs.repo }}
           ref: ${{ inputs.ref }}
           path: photocraft
       - uses: actions/checkout@v4
@@ -178,6 +183,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          REPO: ${{ inputs.repo }}
           REF: ${{ inputs.ref }}
         run: |
           ls -la saida
@@ -185,7 +191,7 @@ jobs:
           [ -n "$v" ] || { echo "nenhum instalador encontrado" >&2; exit 1; }
           tag="photocraft-v$v"
           (cd saida && sha256sum PhotoCraft-* >SHA256SUMS.txt)
-          sed -e "s/{VERSAO}/$v/g" -e "s|{REF}|$REF|g" instalador-photocraft/notas-release.md >notas.md
+          sed -e "s/{VERSAO}/$v/g" -e "s|{REF}|$REF|g" -e "s|{REPO}|$REPO|g" instalador-photocraft/notas-release.md >notas.md
           if gh release view "$tag" >/dev/null 2>&1; then
             gh release upload "$tag" saida/* --clobber
             gh release edit "$tag" --notes-file notas.md

@@ -14,5 +14,5 @@ computador", clique em *Mais informações › Executar assim mesmo*.
 **Mac:** abra o `.dmg` e arraste o PhotoCraft para a pasta Aplicativos. Na primeira vez, clique com o
 botão direito no PhotoCraft em Aplicativos e escolha *Abrir*.
 
-Compilado de [storytold/photocraft](https://github.com/storytold/photocraft) (`{REF}`), sob MIT ou
+Compilado de [{REPO}](https://github.com/{REPO}) (`{REF}`), sob MIT ou
 Apache-2.0. `SHA256SUMS.txt` traz o checksum de cada arquivo.
