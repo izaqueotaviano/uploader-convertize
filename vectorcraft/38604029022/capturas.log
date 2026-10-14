@@ -1,0 +1,16 @@
+$ xvfb-run -a -s -screen 0 1600x1000x24 /home/runner/work/uploader-convertize/uploader-convertize/app/target/debug/vectorcraft --control 7979
+  ui.set {"brightness": "mediumDark"} -> {"id":1,"ok":true,"result":"mediumDark"}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png"} -> {"id":2,"ok":true,"result":{"height":872,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png","width":1440}}
+  engine.execute {"command": "file.newDialog"} -> {"id":3,"ok":true,"result":null}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/2-novo-documento.png"} -> {"id":4,"ok":true,"result":{"height":872,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/2-novo-documento.png","width":1440}}
+  ui.dialog.set {"field": "category", "value": "Print"} -> {"id":5,"ok":true,"result":{"fields":{"__applied":{"artboardLayout":{"columns":1,"layout":"gridByRow","rightToLeft":false,"spacing":20.0},"artboards":1,"backgroundContents":"transparent","bleed":[0.0,0.0,0.0,0.0],"colorMode":"cmyk","height":792.0,"preset":"Letter","previewMode":"default","rasterEffe
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/3-novo-documento-print.png"} -> {"id":6,"ok":true,"result":{"height":872,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/3-novo-documento-print.png","width":1440}}
+  ui.dialog.set {"field": "advanced", "value": true} -> {"id":7,"ok":true,"result":{"fields":{"__applied":{"artboardLayout":{"columns":1,"layout":"gridByRow","rightToLeft":false,"spacing":20.0},"artboards":1,"backgroundContents":"transparent","bleed":[0.0,0.0,0.0,0.0],"colorMode":"cmyk","height":792.0,"preset":"Letter","previewMode":"default","rasterEffe
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/4-novo-documento-avancado.png"} -> {"id":8,"ok":true,"result":{"height":872,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/4-novo-documento-avancado.png","width":1440}}
+  ui.dialog.cancel {} -> {"id":9,"ok":true,"result":null}
+  engine.execute {"command": "file.new", "params": {}} -> {"id":10,"ok":true,"result":{"index":0,"previewMode":"default"}}
+  engine.execute {"command": "shape.rectangle", "params": {"x": 120, "y": 160, "width": 200, "height": 140}} -> {"id":11,"ok":true,"result":{"id":2}}
+  engine.execute {"command": "shape.rectangle", "params": {"x": 380, "y": 160, "width": 200, "height": 140}} -> {"id":12,"ok":true,"result":{"id":3}}
+  engine.execute {"command": "shape.rectangle", "params": {"x": 640, "y": 160, "width": 200, "height": 140}} -> {"id":13,"ok":true,"result":{"id":4}}
+  engine.execute {"command": "shape.rectangle", "params": {"x": 900, "y": 160, "width": 200, "height": 140}} -> {"id":14,"ok":true,"result":{"id":5}}
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/5-janela-principal.png"} -> {"id":15,"ok":true,"result":{"height":872,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/5-janela-principal.png","width":1440}}
