@@ -1,0 +1,9 @@
+test dialogs::new_document::tests::cards_show_size_and_mode_and_one_is_outlined ... FAILED
+test i18n::tests::menu_catalogs_translate_every_menu_label ... FAILED
+failures:
+thread 'dialogs::new_document::tests::cards_show_size_and_mode_and_one_is_outlined' (9744) panicked at /home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/epaint-0.36.2/src/textures.rs:337:9:
+thread 'i18n::tests::menu_catalogs_translate_every_menu_label' (10622) panicked at crates/ui-egui/src/i18n/tests.rs:574:13:
+failures:
+    dialogs::new_document::tests::cards_show_size_and_mode_and_one_is_outlined
+test result: FAILED. 1269 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 13.58s
+resultado=failure
