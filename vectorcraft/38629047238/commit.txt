@@ -1,0 +1,1 @@
+698496ed4de875eacf520d4e2c6271030cb100af WIP: teste da tela de criar arquivo limpa as texturas e aceita o contorno em fade-in
