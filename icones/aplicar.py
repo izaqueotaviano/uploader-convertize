@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera, a partir do ícone escolhido (SVG em icones/opcoes/), todos os arquivos que o app usa em
+"""Gera, a partir da logo final (SVG em icones/finais/), todos os arquivos que o app usa em
 assets/app-icon/, com os mesmos nomes do projeto original. O workflow copia essa pasta por cima do
 checkout antes de compilar, então o ícone novo entra no .exe, no .app, na janela, no Dock e no
 instalador.
@@ -18,15 +18,25 @@ import subprocess
 
 from PIL import Image
 
+from gerar_icones import SQ, icon
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 HICOLOR = [16, 24, 32, 48, 64, 128, 256, 512]
 
 APPS = {
-    # app: (svg escolhido, png de 1024 é a versão macOS?, png macOS de 512 extra?)
-    "vectorcraft": ("vectorcraft-1-bezier.svg", False, True),
-    "photocraft": ("photocraft-3-selecao.svg", True, False),
+    # app: (logo final, png de 1024 é a versão macOS?, png macOS de 512 extra?)
+    # A logo é quadrada, com o fundo cheio; usamos a variante clara (padrão) das SVGs "adaptive".
+    "vectorcraft": ("vectorcraft-claro.svg", False, True),
+    "photocraft": ("photocraft-claro.svg", True, False),
 }
+
+
+def moldura(logo):
+    """Coloca a logo quadrada dentro do squircle do macOS (824 de 1024), com a sombra externa."""
+    logo = re.sub(r"<svg[^>]*>", '<svg x="100" y="100" width="824" height="824" viewBox="0 0 1000 1000">',
+                  logo, count=1)
+    return icon("", "#000", f'<path d="{SQ}" fill="#000"/>{logo}', glass=False)
 
 
 def cheia(svg):
@@ -47,8 +57,8 @@ def render(svg_text, size):
 
 def main():
     for app, (escolhido, macos_1024, macos_512) in APPS.items():
-        with open(os.path.join(HERE, "opcoes", escolhido)) as f:
-            mac = f.read()
+        with open(os.path.join(HERE, "finais", escolhido)) as f:
+            mac = moldura(f.read())
         full = cheia(mac)
         dest = os.path.join(ROOT, f"instalador-{app}", "icone", "app-icon")
         os.makedirs(dest, exist_ok=True)
