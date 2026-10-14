@@ -1,0 +1,7 @@
+test status_bar_tests::status_bar_is_filled_with_its_theme_colour ... FAILED
+failures:
+thread 'status_bar_tests::status_bar_is_filled_with_its_theme_colour' (11309) panicked at crates/ui-egui/src/status_bar_tests.rs:80:9:
+failures:
+    status_bar_tests::status_bar_is_filled_with_its_theme_colour
+test result: FAILED. 2691 passed; 1 failed; 12 ignored; 0 measured; 0 filtered out; finished in 51.63s
+resultado=failure
