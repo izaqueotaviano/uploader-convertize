@@ -1,5 +1,5 @@
 name: FigCraft installers
-# Compila o FigCraft (github.com/storytold/figcraft) a partir do código-fonte e gera:
+# Compila o FigCraft (por padrão do fork izaqueotaviano/figcraft; original: github.com/storytold/figcraft) a partir do código-fonte e gera:
 #   FigCraft-<versão>-macOS-Universal.dmg      (Apple silicon + Intel, arrastar para Aplicativos)
 #   FigCraft-<versão>-Windows-<arch>-Setup.exe (assistente Inno Setup)
 # e publica os dois numa Release deste repositório (aba Releases), para baixar e executar.
@@ -7,6 +7,10 @@ name: FigCraft installers
 on:
   workflow_dispatch:
     inputs:
+      repo:
+        description: Repositório do FigCraft (dono/nome)
+        default: izaqueotaviano/figcraft
+        required: true
       ref:
         description: Branch, tag ou commit do FigCraft
         default: main
@@ -23,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: storytold/figcraft
+          repository: ${{ inputs.repo }}
           ref: ${{ inputs.ref }}
           path: figcraft
       # Fontes japonesas, chinesas, árabes e tailandesas que os builds oficiais embutem.
@@ -88,7 +92,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: storytold/figcraft
+          repository: ${{ inputs.repo }}
           ref: ${{ inputs.ref }}
           path: figcraft
       - uses: actions/checkout@v4
