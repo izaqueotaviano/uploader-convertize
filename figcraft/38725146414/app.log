@@ -1,0 +1,6 @@
+FigCraft control server listening on 127.0.0.1:7980
+[2026-10-15T11:26:19Z WARN  winit::platform_impl::linux::x11::xdisplay] error setting XSETTINGS; Xft options won't reload automatically
+[2026-10-15T11:26:19Z WARN  winit::platform_impl::linux::x11::util::randr] XRandR reported that the display's 0mm in size, which is certifiably insane
+libEGL warning: DRI3 error: Could not get DRI3 device
+libEGL warning: Ensure your X server supports DRI3 to get accelerated rendering
+[2026-10-15T11:26:20Z WARN  egui_wgpu] Software rasterizer detected - loss of performance expected. backend: Vulkan, device_type: Cpu, name: "llvmpipe (LLVM 20.1.2, 256 bits)", driver: "llvmpipe", driver_info: "Mesa 25.2.8-0ubuntu0.24.04.4 (LLVM 20.1.2)", vendor: Mesa (0x10005), subgroup_size: 8..=8, transient_saves_memory: Some(false), limit_bucket: None

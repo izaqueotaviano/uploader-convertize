@@ -1,0 +1,2 @@
+$ xvfb-run -a -s -screen 0 1600x1000x24 /home/runner/work/uploader-convertize/uploader-convertize/app/target/debug/figcraft --control 7980
+  ui.screenshot {"path": "/home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png"} -> {"id":1,"ok":true,"result":{"height":900,"path":"/home/runner/work/uploader-convertize/uploader-convertize/saida/1-inicio.png","width":1440}}
