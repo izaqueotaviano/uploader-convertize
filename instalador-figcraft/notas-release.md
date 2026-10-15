@@ -14,5 +14,5 @@ computador", clique em *Mais informações › Executar assim mesmo*.
 **Mac:** abra o `.dmg` e arraste o FigCraft para a pasta Aplicativos. Na primeira vez, clique com o
 botão direito no FigCraft em Aplicativos e escolha *Abrir*.
 
-Compilado de [izaqueotaviano/figcraft](https://github.com/izaqueotaviano/figcraft) (`{REF}`), baseado em [storytold/figcraft](https://github.com/storytold/figcraft),, sob MIT ou
+Compilado de [izaqueotaviano/figcraft](https://github.com/izaqueotaviano/figcraft) (`{REF}`), baseado em [storytold/figcraft](https://github.com/storytold/figcraft), sob MIT ou
 Apache-2.0. `SHA256SUMS.txt` traz o checksum de cada arquivo.
