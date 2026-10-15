@@ -69,7 +69,8 @@ jobs:
           case "$APP" in
             vectorcraft) echo "UI_PKG=vectorcraft-ui-egui" >>"$GITHUB_ENV"; echo "BIN_PKG=vectorcraft" >>"$GITHUB_ENV" ;;
             photocraft)  echo "UI_PKG=photocraft-ui-egui"  >>"$GITHUB_ENV"; echo "BIN_PKG=photocraft"  >>"$GITHUB_ENV" ;;
-            figcraft)    echo "UI_PKG=figcraft-ui-egui"    >>"$GITHUB_ENV"; echo "BIN_PKG=figcraft"    >>"$GITHUB_ENV" ;;
+            figcraft)    echo "UI_PKG=figcraft-ui-egui"    >>"$GITHUB_ENV"; echo "BIN_PKG=figcraft"    >>"$GITHUB_ENV"
+                         echo "EXTRA_TEST_PKGS=-p figcraft-engine -p figcraft-doc -p figcraft-format -p figcraft-render -p figcraft-media -p figcraft-svg -p figcraft-pdf -p figcraft-color" >>"$GITHUB_ENV" ;;
             filmcraft)   echo "UI_PKG=filmcraft-ui-egui"   >>"$GITHUB_ENV"; echo "BIN_PKG=filmcraft"   >>"$GITHUB_ENV" ;;
           esac
           mkdir -p saida
@@ -81,7 +82,12 @@ jobs:
         working-directory: app
         run: |
           set -o pipefail
-          cargo test --locked -p "$UI_PKG" 2>&1 | tee ../saida/testes.log
+          # Os pacotes extras (só FigCraft) rodam apenas testes de biblioteca e de integração, sem doctests.
+          if [ -n "${EXTRA_TEST_PKGS:-}" ]; then
+            cargo test --locked -p "$UI_PKG" $EXTRA_TEST_PKGS --lib --tests 2>&1 | tee ../saida/testes.log
+          else
+            cargo test --locked -p "$UI_PKG" 2>&1 | tee ../saida/testes.log
+          fi
       - name: Resumo dos testes
         if: inputs.testes
         run: |
